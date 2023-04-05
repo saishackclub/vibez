@@ -1,0 +1,58 @@
+.main {
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.buttons {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.button {
+    width: 200px;
+    height: 100%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 3rem;
+    cursor: pointer;
+}
+
+.finalImage {
+    height: 100%;
+    object-fit: cover;
+}
+
+.home {
+    margin-top: 50px;
+}
+
+.homeButton {
+    padding: 0.75rem 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-weight: 600;
+}
+
+.homeButton:hover {
+    transition: all 0.2s ease-in-out;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+}
