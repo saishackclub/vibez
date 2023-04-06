@@ -32,11 +32,14 @@
 
 .splitContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
   
 .splitContainer > div {
     flex: 1;
     width: 50%;
+    margin: 0 50px;
 }
 
 .finalImage {
@@ -68,21 +71,14 @@
 
 .textEditor > div {
     display: block;
+    margin-bottom: 50px;
+}
+
+.form > div {
     margin-bottom: 25px;
 }
 
 .input {
     display: block;
     width: 100%;
-}
-
-.buttons {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-}  
-
-.buttons > * {
-    width: 100%;
-    margin-bottom: 20px;
 }

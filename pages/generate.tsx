@@ -27,13 +27,17 @@ export default function Generate() {
     };
 
     const handleDownload = () => {
+        if (!finalImageRef.current) {
+          return;
+        }
+      
         html2canvas(finalImageRef.current).then((canvas) => {
           const link = document.createElement('a');
           link.download = 'example.png';
           link.href = canvas.toDataURL('image/png');
           link.click();
         });
-    };
+    };      
 
     return (
         <>
@@ -96,26 +100,22 @@ export default function Generate() {
                     </div>
 
                     <div className={styles.textEditor}>
-                        <div>
-                            <label htmlFor="title">Title:</label>
-                            <input className={styles.input} id="title" type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} />
-                        </div>
+                        <div className={styles.form}>
+                            <div>
+                                <label htmlFor="title">Title:</label>
+                                <input className={styles.input} id="title" type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                            </div>
 
-                        <div>
-                            <label htmlFor="date">Date:</label>
-                            <input className={styles.input} id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                            <div>
+                                <label htmlFor="date">Date:</label>
+                                <input className={styles.input} id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                            </div>
                         </div>
 
                         <div className={styles.buttons}>
                             <button onClick={handleDownload}>
                                 download image
                             </button>
-
-                            <Link href="/" passHref>
-                                <button>
-                                    back to home
-                                </button>
-                            </Link>
                         </div>
                     </div>
                 </div>
