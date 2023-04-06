@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import html2canvas from "html2canvas";
 
 import Head from "next/head";
 import Image from "next/image";
@@ -10,6 +11,7 @@ export default function Generate() {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
     const [message, setMessage] = useState("");
+    const finalImageRef = useRef(null);
     
     const handleClick = (e: any) => {
         const color = e.target.innerText;
@@ -23,49 +25,23 @@ export default function Generate() {
     const handleDateChange = (e: any) => {
         setDate(e.target.value);
     };
-    
-    const handleMessageChange = (e: any) => {
-        setMessage(e.target.value);
+
+    const handleDownload = () => {
+        html2canvas(finalImageRef.current).then((canvas) => {
+          const link = document.createElement('a');
+          link.download = 'example.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        });
     };
 
     return (
         <>
-            <Head>
-                <title>generate | Vibez@SAISHackClub</title>
-                <meta name="description" content="" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-
-                <link
-                    rel="apple-touch-icon"
-                    sizes="180x180"
-                    href="/apple-touch-icon.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="32x32"
-                    href="/favicon-32x32.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="16x16"
-                    href="/favicon-16x16.png"
-                />
-                <link rel="manifest" href="/site.webmanifest" />
-            </Head>
             <main className={styles.main}>
                 {/* TODO: Clean up button options + wrap up final image generation with html2canvas */}
-                <div className={styles.buttons}>
+                <div className={styles.choices}>
                     <button
-                        className={styles.button}
+                        className={styles.choice}
                         style={{
                             backgroundColor: "rgba(236, 55, 80, 0.75)",
                         }}
@@ -74,7 +50,7 @@ export default function Generate() {
                         red
                     </button>
                     <button
-                        className={styles.button}
+                        className={styles.choice}
                         style={{
                             backgroundColor: "rgba(241, 196, 15, 0.75)",
                         }}
@@ -83,7 +59,7 @@ export default function Generate() {
                         yellow
                     </button>
                     <button
-                        className={styles.button}
+                        className={styles.choice}
                         style={{
                             backgroundColor: "rgba(51, 214, 166, 0.75)",
                         }}
@@ -92,7 +68,7 @@ export default function Generate() {
                         green
                     </button>
                     <button
-                        className={styles.button}
+                        className={styles.choice}
                         style={{
                             backgroundColor: "rgba(51, 142, 218, 0.75)",
                         }}
@@ -103,19 +79,19 @@ export default function Generate() {
                 </div>
 
                 <div className={styles.splitContainer}>
-                    <div className={styles.finalImage}>
-                        <Image
-                            src={selectedImage}
-                            alt="red"
-                            width={300}
-                            height={533}
-                        />
+                    <div className={styles.left}>
+                        <div className={styles.finalImage} ref={finalImageRef}>
+                            <Image
+                                src={selectedImage}
+                                alt="red"
+                                width={300}
+                                height={533}
+                            />
 
-                        <div className={styles.finalDescription}>
-                            <h1 className={styles.finalTitle}>{title}</h1>
-                            <p className={styles.finalDate}>{date}</p>
-                            
-                            <p className={styles.finalMessage}>{message}</p>
+                            <div className={styles.finalDescription}>
+                                <h1 className={styles.finalTitle}>{title}</h1>
+                                <p className={styles.finalDate}>{date}</p>
+                            </div>
                         </div>
                     </div>
 
@@ -130,14 +106,15 @@ export default function Generate() {
                             <input className={styles.input} id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
                         </div>
 
-                        <div>
-                            <label htmlFor="message">Message:</label>
-                            <textarea className={styles.input} id="message" placeholder="Enter message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
-                        </div>
+                        <div className={styles.buttons}>
+                            <button onClick={handleDownload}>
+                                download image
+                            </button>
 
-                        <div className={styles.home}>
-                            <Link href="/" passHref className={styles.homeButton}>
-                                back to home
+                            <Link href="/" passHref>
+                                <button>
+                                    back to home
+                                </button>
                             </Link>
                         </div>
                     </div>

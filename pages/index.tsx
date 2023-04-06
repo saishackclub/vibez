@@ -62,8 +62,10 @@ export default function Home() {
                 </div>
 
                 <div className={styles.cta}>
-                    <Link href="/generate" passHref className={styles.button}>
-                        begin the journey
+                    <Link href="/generate" passHref>
+                        <button>
+                            begin the journey
+                        </button>
                     </Link>
                 </div>
             </main>
