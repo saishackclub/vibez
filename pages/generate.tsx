@@ -7,10 +7,25 @@ import styles from "@/styles/Generate.module.css";
 
 export default function Generate() {
     const [selectedImage, setSelectedImage] = useState("/red.jpg");
-
+    const [title, setTitle] = useState("");
+    const [date, setDate] = useState("");
+    const [message, setMessage] = useState("");
+    
     const handleClick = (e: any) => {
         const color = e.target.innerText;
         setSelectedImage(`/${color}.jpg`);
+    };
+    
+    const handleTitleChange = (e: any) => {
+        setTitle(e.target.value);
+    };
+    
+    const handleDateChange = (e: any) => {
+        setDate(e.target.value);
+    };
+    
+    const handleMessageChange = (e: any) => {
+        setMessage(e.target.value);
     };
 
     return (
@@ -87,19 +102,45 @@ export default function Generate() {
                     </button>
                 </div>
 
-                <div className={styles.finalImage}>
-                    <Image
-                        src={selectedImage}
-                        alt="red"
-                        width={300}
-                        height={533}
-                    />
-                </div>
+                <div className={styles.splitContainer}>
+                    <div className={styles.finalImage}>
+                        <Image
+                            src={selectedImage}
+                            alt="red"
+                            width={300}
+                            height={533}
+                        />
 
-                <div className={styles.home}>
-                    <Link href="/" passHref className={styles.homeButton}>
-                        back to home
-                    </Link>
+                        <div className={styles.finalDescription}>
+                            <h1 className={styles.finalTitle}>{title}</h1>
+                            <p className={styles.finalDate}>{date}</p>
+                            
+                            <p className={styles.finalMessage}>{message}</p>
+                        </div>
+                    </div>
+
+                    <div className={styles.textEditor}>
+                        <div>
+                            <label htmlFor="title">Title:</label>
+                            <input className={styles.input} id="title" type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                        </div>
+
+                        <div>
+                            <label htmlFor="date">Date:</label>
+                            <input className={styles.input} id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                        </div>
+
+                        <div>
+                            <label htmlFor="message">Message:</label>
+                            <textarea className={styles.input} id="message" placeholder="Enter message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
+                        </div>
+
+                        <div className={styles.home}>
+                            <Link href="/" passHref className={styles.homeButton}>
+                                back to home
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </main>
         </>
