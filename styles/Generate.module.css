@@ -35,34 +35,50 @@
     justify-content: center;
     align-items: center;
 }
-  
+
 .splitContainer > div {
     flex: 1;
     width: 50%;
     margin: 0 50px;
 }
 
-.finalImage {
-    height: 100%;
+.left {
     max-width: 300px;
+}
+
+.finalImage {
+    width: 100%;
     max-height: 533px;
-    object-fit: cover;
     position: relative;
 }
-  
+
 .finalDescription {
     position: absolute;
     top: 0;
     left: 0;
     margin: 10px;
     color: white;
-    
-    overflow-wrap: break-word;
-    max-width: 280px;
+
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow: hidden;
+    height: calc(100% - 20px);
 }
 
-.finalTitle, .finalDate {
+.finalBackground {
+    filter: blur(1px);
+    opacity: 0.8;
+}
+
+.finalTitle,
+.finalDate {
     margin: 0;
+}
+
+
+.finalTitle {
+    font-size: 50px;
 }
 
 .finalDate {
@@ -81,4 +97,8 @@
 .input {
     display: block;
     width: 100%;
+}
+
+.buttons > button:not(:last-child) {
+    margin-bottom: 25px;
 }

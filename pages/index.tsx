@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>home | Vibez@SAISHackClub</title>
+                <title>home | Vibez</title>
                 <meta
                     name="description"
                     content="❤️💛💚💙 What's your vibe here at SAIS Hack Club?"

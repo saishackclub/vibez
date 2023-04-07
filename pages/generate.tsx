@@ -10,39 +10,59 @@ export default function Generate() {
     const [selectedImage, setSelectedImage] = useState("/red.jpg");
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
-    const [message, setMessage] = useState("");
     const finalImageRef = useRef(null);
-    
-    const handleClick = (e: any) => {
-        const color = e.target.innerText;
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const color = e.currentTarget.innerText;
         setSelectedImage(`/${color}.jpg`);
-    };
-    
-    const handleTitleChange = (e: any) => {
-        setTitle(e.target.value);
-    };
-    
-    const handleDateChange = (e: any) => {
-        setDate(e.target.value);
     };
 
     const handleDownload = () => {
         if (!finalImageRef.current) {
-          return;
+            return;
         }
-      
-        html2canvas(finalImageRef.current).then((canvas) => {
-          const link = document.createElement('a');
-          link.download = 'example.png';
-          link.href = canvas.toDataURL('image/png');
-          link.click();
+
+        html2canvas(finalImageRef.current).then((canvas: HTMLCanvasElement) => {
+            const link = document.createElement("a");
+            link.download = "example.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
         });
-    };      
+    };
 
     return (
         <>
+            <Head>
+                <title>generate | Vibez</title>
+                <meta
+                    name="description"
+                    content="❤️💛💚💙 What's your vibe here at SAIS Hack Club?"
+                />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="/apple-touch-icon.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="32x32"
+                    href="/favicon-32x32.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="16x16"
+                    href="/favicon-16x16.png"
+                />
+                <link rel="manifest" href="/site.webmanifest" />
+            </Head>
             <main className={styles.main}>
-                {/* TODO: Clean up button options + wrap up final image generation with html2canvas */}
                 <div className={styles.choices}>
                     <button
                         className={styles.choice}
@@ -90,6 +110,7 @@ export default function Generate() {
                                 alt="red"
                                 width={300}
                                 height={533}
+                                className={styles.finalBackground}
                             />
 
                             <div className={styles.finalDescription}>
@@ -103,12 +124,25 @@ export default function Generate() {
                         <div className={styles.form}>
                             <div>
                                 <label htmlFor="title">Title:</label>
-                                <input className={styles.input} id="title" type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                                <input
+                                    className={styles.input}
+                                    id="title"
+                                    type="text"
+                                    placeholder="Enter title"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                />
                             </div>
 
                             <div>
                                 <label htmlFor="date">Date:</label>
-                                <input className={styles.input} id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                                <input
+                                    className={styles.input}
+                                    id="date"
+                                    type="date"
+                                    value={date}
+                                    onChange={(e) => setDate(e.target.value)}
+                                />
                             </div>
                         </div>
 
@@ -116,6 +150,10 @@ export default function Generate() {
                             <button onClick={handleDownload}>
                                 download image
                             </button>
+
+                            <Link href="/">
+                                <button>back to home</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
