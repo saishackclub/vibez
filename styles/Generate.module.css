@@ -50,11 +50,12 @@
     width: 100%;
     max-height: 533px;
     position: relative;
+    border: 1px solid #ffffff;
 }
 
 .finalDescription {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     margin: 10px;
     color: white;
@@ -63,12 +64,13 @@
     white-space: pre-wrap;
     word-break: break-word;
     overflow: hidden;
-    height: calc(100% - 20px);
+    /* height: calc(100% - 20px); */
 }
 
-.finalBackground {
-    filter: blur(1px);
-    opacity: 0.8;
+.logo {
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .finalTitle,
@@ -83,6 +85,7 @@
 
 .finalDate {
     font-size: 16px;
+    padding-left: 2px;
 }
 
 .textEditor > div {

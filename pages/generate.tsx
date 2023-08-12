@@ -14,8 +14,15 @@ export default function Generate() {
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         const color = e.currentTarget.innerText;
-        setSelectedImage(`/${color}.jpg`);
+        console.log(`/downloads/${color}-download.jpg`);
+        setSelectedImage(`/downloads/${color}-download.jpg`);
     };
+    
+    const formatDate = (dateString: string): string => {
+        const options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric', year: 'numeric' };
+        const date = new Date(dateString);
+        return new Intl.DateTimeFormat('en-US', options).format(date).toLowerCase();
+    };    
 
     const handleDownload = () => {
         if (!finalImageRef.current) {
@@ -106,17 +113,19 @@ export default function Generate() {
                     <div className={styles.left}>
                         <div className={styles.finalImage} ref={finalImageRef}>
                             <Image
-                                src={selectedImage}
+                                src={selectedImage || "/downloads/red-download.jpg"}
                                 alt="red"
                                 width={300}
                                 height={533}
                                 className={styles.finalBackground}
                                 unoptimized
                             />
+                            
+                            <Image src="/logo.png" className={styles.logo} alt="logo" width={35} height={35} />
 
                             <div className={styles.finalDescription}>
+                                <p className={styles.finalDate}><b>{date ? formatDate(date) : ''}</b></p>
                                 <h1 className={styles.finalTitle}>{title}</h1>
-                                <p className={styles.finalDate}>{date}</p>
                             </div>
                         </div>
                     </div>

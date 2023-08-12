@@ -40,24 +40,24 @@ export default function Home() {
                 <h1>what&apos;s your vibe today?</h1>
 
                 <div className={styles.gallery}>
-                    <Image src="/red.jpg" alt="red" width={300} height={300} />
+                    <Image src="/red.jpg" alt="red" width={300} height={450} />
                     <Image
                         src="/yellow.jpg"
                         alt="yellow"
                         width={300}
-                        height={300}
+                        height={450}
                     />
                     <Image
                         src="/green.jpg"
                         alt="green"
                         width={300}
-                        height={300}
+                        height={450}
                     />
                     <Image
                         src="/blue.jpg"
                         alt="blue"
                         width={300}
-                        height={300}
+                        height={450}
                     />
                 </div>
 
