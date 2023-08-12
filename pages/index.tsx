@@ -17,6 +17,40 @@ export default function Home() {
                     content="width=device-width, initial-scale=1"
                 />
 
+                {/* OG graph */}
+                <meta property="og:title" content="vibez | SAIS Hack Club" />
+                <meta
+                    property="og:description"
+                    content="❤️💛💚💙 What's your vibe here at SAIS Hack Club?"
+                />
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:url"
+                    content="https://vibez.saishack.club/"
+                />
+                <meta
+                    property="og:image"
+                    content="https://vibez.saishack.club/og.png"
+                />
+
+                {/* Twitter */}
+                <meta
+                    name="twitter:card"
+                    content="summary_large_image"
+                />
+                <meta
+                    name="twitter:title"
+                    content="vibez | SAIS Hack Club"
+                />
+                <meta
+                    name="twitter:description"
+                    content="❤️💛💚💙 What's your vibe here at SAIS Hack Club?"
+                />
+                <meta
+                    name="twitter:image"
+                    content="https://vibez.saishack.club/og.png"
+                />
+
                 <link
                     rel="apple-touch-icon"
                     sizes="180x180"
